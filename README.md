@@ -2,8 +2,7 @@
 
 The project consists of two parts:
 
-1. Keychain manager
-2. HD Wallet
+A keychain manager for bitcoin keys and addresses based on BIP32 standard.
 
 ## Getting Started
 

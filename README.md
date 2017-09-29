@@ -1,7 +1,5 @@
 # KeyMan 
 
-The project consists of two parts:
-
 A keychain manager for bitcoin keys and addresses based on BIP32 standard.
 
 ## Getting Started

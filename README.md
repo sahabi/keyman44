@@ -2,8 +2,8 @@
 
 The project consists of two parts:
 
-1- Keychain manager
-2- HD Wallet
+1. Keychain manager
+2. HD Wallet
 
 ## Getting Started
 

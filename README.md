@@ -26,7 +26,7 @@ Soon.
 
 ## Contributing
 
-Please read [CONTRIBUTING](https://github.com/sahabi/keyman/contributing) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING](CONTRIBUTING) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 

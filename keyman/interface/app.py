@@ -40,7 +40,6 @@ class App(object):
         self.ui = Ui_second()
         self.ui.setupUi(self.second)
         self.second.show()
-        #sys.exit(self.app.exec_())
 
     def gen_seed(self):
         self.chain_code, self.secret_exponent = get_chain_secret_pair()

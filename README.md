@@ -23,13 +23,15 @@ Soon.
 
 ## Contributing
 
-<> Please read [CONTRIBUTING](CONTRIBUTING) for details on our code of conduct, and the process for submitting pull requests to us.
+<!--- Please read [CONTRIBUTING](CONTRIBUTING) for details on our code of conduct, and the process for submitting pull requests to us.
+-->
 Soon.
 ## Authors
 
 * **Mohammed Alshiekh** - [Sahabi](https://github.com/Sahabi)
 
-<> See also the list of [contributors](https://github.com/sahabi/keyman/) who participated in this project.
+<!--- See also the list of [contributors](https://github.com/sahabi/keyman/) who participated in this project.
+-->
 
 ## License
 

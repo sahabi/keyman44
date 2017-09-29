@@ -1,58 +1,53 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'first_page.ui'
+# Form implementation generated from reading ui file 'firstgui.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from pycoin.key.BIP32Node import BIP32Node
-from pycoin.cmds.ku import get_entropy
-from pycoin.networks.default import get_current_netcode
-from ui import Ui_first
-from ..encoding.encoding import get_chain_secret_pair
-import sys
-from second_page import Ui_second
 
-class App(object):
-    def __init__(self):
-        self.app = QtWidgets.QApplication(sys.argv)
-        self.first = QtWidgets.QDialog()
-        self.second = QtWidgets.QDialog()
-        self.ui = Ui_first()
-        self.ui.setupUi(self.first)
-        self.ui.gen_key_button.clicked.connect(self.gen_seed)
-        self.ui.secret_exponent.textChanged.connect(self.detect_text)
-        self.ui.next_button.clicked.connect(self.next)
+class Ui_first(object):
+    def setupUi(self, first):
+        first.setObjectName("first")
+        first.resize(411, 247)
+        self.close_button = QtWidgets.QDialogButtonBox(first)
+        self.close_button.setGeometry(QtCore.QRect(10, 210, 381, 32))
+        self.close_button.setOrientation(QtCore.Qt.Horizontal)
+        self.close_button.setStandardButtons(QtWidgets.QDialogButtonBox.Close)
+        self.close_button.setObjectName("close_button")
+        self.secret_exponent = QtWidgets.QLineEdit(first)
+        self.secret_exponent.setGeometry(QtCore.QRect(40, 50, 331, 21))
+        self.secret_exponent.setObjectName("secret_exponent")
+        self.gen_key_button = QtWidgets.QPushButton(first)
+        self.gen_key_button.setGeometry(QtCore.QRect(80, 150, 101, 23))
+        self.gen_key_button.setMouseTracking(True)
+        self.gen_key_button.setObjectName("gen_key_button")
+        self.next_button = QtWidgets.QPushButton(first)
+        self.next_button.setEnabled(False)
+        self.next_button.setGeometry(QtCore.QRect(220, 150, 101, 23))
+        self.next_button.setObjectName("next_button")
+        self.chain_code = QtWidgets.QLineEdit(first)
+        self.chain_code.setGeometry(QtCore.QRect(40, 110, 331, 21))
+        self.chain_code.setObjectName("chain_code")
+        self.label = QtWidgets.QLabel(first)
+        self.label.setGeometry(QtCore.QRect(160, 20, 141, 17))
+        self.label.setObjectName("label")
+        self.label_2 = QtWidgets.QLabel(first)
+        self.label_2.setGeometry(QtCore.QRect(150, 80, 141, 17))
+        self.label_2.setObjectName("label_2")
 
-    def run(self):
-        self.first.show()
-        sys.exit(self.app.exec_())
+        self.retranslateUi(first)
+        self.close_button.accepted.connect(first.accept)
+        self.close_button.rejected.connect(first.reject)
+        QtCore.QMetaObject.connectSlotsByName(first)
 
     def retranslateUi(self, first):
         _translate = QtCore.QCoreApplication.translate
-        self.first.setWindowTitle(_translate("first", "Welcome"))
-        self.gen_seed_button.setText(_translate("first", "Generate Seed "))
+        first.setWindowTitle(_translate("first", "Welcome"))
+        self.gen_key_button.setText(_translate("first", "Generate Key"))
         self.next_button.setText(_translate("first", "Next"))
+        self.label.setText(_translate("first", "Secret Exponent"))
+        self.label_2.setText(_translate("first", "Chain Code"))
 
-    def next(self):
-        self.first.done(0)
-        self.ui = Ui_second()
-        self.ui.setupUi(self.second)
-        self.second.show()
-        #sys.exit(self.app.exec_())
-
-    def gen_seed(self):
-        self.chain_code, self.secret_exponent = get_chain_secret_pair()
-        self.ui.secret_exponent.setText(self.secret_exponent)
-        self.ui.chain_code.setText(self.chain_code)
-
-    def detect_text(self, text):
-        if len(text) > 0:
-            self.ui.next_button.setEnabled(True)
-        else:
-            self.ui.next_button.setEnabled(False)
-
-app = App()
-app.run()

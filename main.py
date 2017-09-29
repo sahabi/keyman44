@@ -1,1 +1,1 @@
-from keyman.interface import first_page
+from keyman.interface import app

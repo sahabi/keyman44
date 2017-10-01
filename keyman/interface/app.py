@@ -70,10 +70,9 @@ class App(object):
 
     def create_pub_from_priv(self):
         level = self.privkeychain.get_selected_level()
-        print(level)
 
     def create_priv(self):
-        level = self.privkey_keychain.which()
+        level = self.privkey_keychain.get_selected_level()
 
     def gen_seed(self):
         self.chain_code, self.secret_exponent = get_chain_secret_pair()

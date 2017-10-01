@@ -49,9 +49,9 @@ class App(object):
                 secret_exponent=int(self.secret_exponent,16))
         master_pub_node = master_node.public_copy()
         privkey_tree_item = PrivKeyTreeWidgetItem(key_type='Private Key',
-                level='m', key=master_node, wif='this is wif')
+                level='m', key=master_node)
         pubkey_tree_item = PubKeyTreeWidgetItem(key_type='Public Key',
-                level='M', key=master_pub_node, sec='this is sec', address='this is address')
+                level='M', key=master_pub_node)
 
         self.privkeychain.append(privkey_tree_item)
         self.pubkeychain.append(pubkey_tree_item)
@@ -62,12 +62,17 @@ class App(object):
 
     def show_context_menu(self, pos):
         menu = QtWidgets.QMenu()
+        menu.addAction("Rename", self.rename_key)
         if self.pubkeychain.isSelected():
             menu.addAction("Create PubKey", self.derive_pub_from_pub)
         elif self.privkeychain.isSelected():
             menu.addAction("Create PubKey", self.derive_pub_from_priv)
             menu.addAction("Create PrivKey", self.derive_priv)
         action = menu.exec_(self.ui.treeWidget.mapToGlobal(pos))
+
+    def rename_key(self):
+        item = self.privkeychain.get_selected_key()
+        item.setText(0,'Hi')
 
     def derive_pub_from_priv(self, index=1):
         parent_level = self.privkeychain.get_selected_level()
@@ -79,25 +84,26 @@ class App(object):
         parent_key = self.pubkeychain.get_selected_key().key
         self._derive_pub(parent_key, parent_level, self.pubkeychain)
 
-    def _derive_pub(self, parent_key, parent_level, keychain, index=1):
+    def _derive_pub(self, parent_key, parent_level, keychain, index=2):
         child_key_type = 'Public Key'
-        child_key = parent_key.public_copy()
+        child_key = parent_key.subkey(as_private=False)
         if parent_level[0] not in ['N', 'M']:
             child_key_label = 'N({})'.format(parent_level) + '/{}'.format(index)
         else:
             child_key_label = parent_level + '/{}'.format(index)
-        child_tree_item = PubKeyTreeWidgetItem(child_key_type, child_key,
-                child_key_label, sec=child_key.sec(use_uncompressed=False))
+        child_tree_item = PubKeyTreeWidgetItem(child_key_type, child_key_label,
+                child_key)
         self.pubkeychain.append(child_tree_item)
         keychain.get_selected_key().addChild(child_tree_item)
 
-    def derive_priv(self, index=1):
+    def derive_priv(self, index=2):
         parent_level = self.privkeychain.get_selected_level()
         parent_key = self.privkeychain.get_selected_key().key
         child_key_type = 'Private Key'
+        child_key_label = parent_level + '/{}'.format(index)
         child_key = parent_key.subkey(as_private=True)
-        child_tree_item = PrivKeyTreeWidgetItem(child_key_type, child_key,
-                parent_level + '/{}'.format(index))
+        child_tree_item = PrivKeyTreeWidgetItem(child_key_type,
+                child_key_label, child_key)
         self.privkeychain.append(child_tree_item)
         self.privkeychain.get_selected_key().addChild(child_tree_item)
 

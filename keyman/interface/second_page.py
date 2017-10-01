@@ -44,7 +44,10 @@ class Ui_second(object):
     def retranslateUi(self, second):
         _translate = QtCore.QCoreApplication.translate
         second.setWindowTitle(_translate("second", "Keyman"))
-        self.treeWidget.headerItem().setText(0, _translate("second", "Tree"))
+        self.treeWidget.headerItem().setText(0, _translate("second", "Keys"))
         self.treeWidget.headerItem().setText(1, _translate("second", "Level"))
+        self.treeWidget.headerItem().setText(2, _translate("second", "WIF-compressed"))
+        self.treeWidget.headerItem().setText(3, _translate("second", "SEC-compressed"))
+        self.treeWidget.headerItem().setText(4, _translate("second", "Address"))
         self.pushButton.setText(_translate("second", "Export"))
 

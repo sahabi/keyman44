@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'first_page.ui'
-#
-# Created by: PyQt5 UI code generator 5.9
-#
-# WARNING! All changes made in this file will be lost!
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 from pycoin.key.BIP32Node import BIP32Node
@@ -18,7 +12,8 @@ from second_page import Ui_second
 from PyQt5.QtWidgets import QTreeWidgetItem
 from pycoin.key.BIP32Node import BIP32Node
 from .keychain import KeyChain
-from .widgets import KeyTreeWidgetItem
+from .widgets import PubKeyTreeWidgetItem, PrivKeyTreeWidgetItem
+
 class App(object):
     def __init__(self):
         self.app = QtWidgets.QApplication(sys.argv)
@@ -50,19 +45,19 @@ class App(object):
     def start_second(self):
         self.ui = Ui_second()
         self.ui.setupUi(self.second)
-        self.master_node = BIP32Node(self.netcode, self.chain_code,
+        master_node = BIP32Node(self.netcode, self.chain_code,
                 secret_exponent=int(self.secret_exponent,16))
-        self.master_pub_node = self.master_node.public_copy()
-        self.privkey_tree_item = KeyTreeWidgetItem('Private Key',
-                self.master_node , 'm')
-        self.pubkey_tree_item = KeyTreeWidgetItem('Public Key',
-                self.master_pub_node, 'M')
-        self.privkeychain.append(self.privkey_tree_item)
-        self.pubkeychain.append(self.pubkey_tree_item)
+        master_pub_node = master_node.public_copy()
+        privkey_tree_item = PrivKeyTreeWidgetItem(key_type='Private Key',
+                level='m', key=master_node, wif='this is wif')
+        pubkey_tree_item = PubKeyTreeWidgetItem(key_type='Public Key',
+                level='M', key=master_pub_node, sec='this is sec', address='this is address')
+
+        self.privkeychain.append(privkey_tree_item)
+        self.pubkeychain.append(pubkey_tree_item)
         self.ui.treeWidget.setContextMenuPolicy(Qt.CustomContextMenu)
         self.ui.treeWidget.customContextMenuRequested.connect(self.show_context_menu)
-        self.ui.treeWidget.addTopLevelItems([self.privkey_tree_item,
-            self.pubkey_tree_item])
+        self.ui.treeWidget.addTopLevelItems([privkey_tree_item, pubkey_tree_item])
         self.second.show()
 
     def show_context_menu(self, pos):
@@ -87,12 +82,12 @@ class App(object):
     def _derive_pub(self, parent_key, parent_level, keychain, index=1):
         child_key_type = 'Public Key'
         child_key = parent_key.public_copy()
-        if parent_level[0] != 'N':
+        if parent_level[0] not in ['N', 'M']:
             child_key_label = 'N({})'.format(parent_level) + '/{}'.format(index)
         else:
             child_key_label = parent_level + '/{}'.format(index)
-        child_tree_item = KeyTreeWidgetItem(child_key_type, child_key,
-                child_key_label)
+        child_tree_item = PubKeyTreeWidgetItem(child_key_type, child_key,
+                child_key_label, sec=child_key.sec(use_uncompressed=False))
         self.pubkeychain.append(child_tree_item)
         keychain.get_selected_key().addChild(child_tree_item)
 
@@ -101,7 +96,7 @@ class App(object):
         parent_key = self.privkeychain.get_selected_key().key
         child_key_type = 'Private Key'
         child_key = parent_key.subkey(as_private=True)
-        child_tree_item = KeyTreeWidgetItem(child_key_type, child_key,
+        child_tree_item = PrivKeyTreeWidgetItem(child_key_type, child_key,
                 parent_level + '/{}'.format(index))
         self.privkeychain.append(child_tree_item)
         self.privkeychain.get_selected_key().addChild(child_tree_item)

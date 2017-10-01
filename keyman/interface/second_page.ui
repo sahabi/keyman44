@@ -49,7 +49,7 @@
    </property>
    <column>
     <property name="text">
-     <string>Tree</string>
+     <string>Keys</string>
     </property>
     <property name="font">
      <font>
@@ -61,6 +61,21 @@
    <column>
     <property name="text">
      <string>Level</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>WIF-compressed</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>SEC-compressed</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Address</string>
     </property>
    </column>
   </widget>

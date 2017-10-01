@@ -1,6 +1,9 @@
 class KeyChain(object):
-    def __init__(self, key_list=[]):
-        self.key_list = key_list
+    def __init__(self, key_list=None):
+        if key_list is None:
+            self.key_list = []
+        else:
+            self.key_list = key_list
        # self.label = label
 
     def isSelected(self):
@@ -22,3 +25,9 @@ class KeyChain(object):
         for key in self.key_list:
             if key.isSelected():
                 return key.level
+
+    def get_selected_key(self):
+        return self.key_list[self.which()]
+
+#    def derive_pubkey(self):
+

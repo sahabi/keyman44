@@ -17,15 +17,46 @@ import rcv_page
 
 class App(object):
     def __init__(self):
-        self.app = QtWidgets.QApplication(sys.argv) 
+        self.app = QtWidgets.QApplication(sys.argv)
         self.main_dialog = QtWidgets.QDialog()
         self.bip44_page = bip44_page.Ui_Dialog()
         self.bip44_page.setupUi(self.main_dialog)
         self.main_dialog.show()
-        self.netcode = get_current_netcode()
+        self.bip44_page.coin_add_btn.clicked.connect(self.add_coin)
+        self.bip44_page.acc_add_btn.clicked.connect(self.add_acc)
+        self.bip44_page.chn_add_btn.clicked.connect(self.add_chn)
+        self.bip44_page.addr_add_btn.clicked.connect(self.add_addr)
+        self.bip44_page.coin_rm_btn.clicked.connect(self.rm_coin)
+        self.bip44_page.acc_rm_btn.clicked.connect(self.rm_acc)
+        self.bip44_page.chn_rm_btn.clicked.connect(self.rm_chn)
+        self.bip44_page.addr_rm_btn.clicked.connect(self.rm_addr)
 
     def run(self):
         sys.exit(self.app.exec_())
+
+    def add_coin(self):
+        self.netcode = get_current_netcode()
+
+    def add_acc(self):
+        pass
+
+    def add_chn(self):
+        pass
+
+    def add_addr(self):
+        pass
+
+    def rm_coin(self):
+        pass
+
+    def rm_acc(self):
+        pass
+
+    def rm_chn(self):
+        pass
+
+    def rm_addr(self):
+        pass
 
     def gen_seed(self):
         self.chain_code, self.secret_exponent = get_chain_secret_pair()

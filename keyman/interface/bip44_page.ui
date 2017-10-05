@@ -194,7 +194,7 @@
     <string>Remove</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="add_rm_btn">
+  <widget class="QPushButton" name="addr_rm_btn">
    <property name="geometry">
     <rect>
      <x>450</x>
@@ -233,7 +233,7 @@
     <string>Add</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="add_add_btn">
+  <widget class="QPushButton" name="addr_add_btn">
    <property name="geometry">
     <rect>
      <x>400</x>

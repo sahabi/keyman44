@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QListView" name="listView">
+  <widget class="QListView" name="coin_list">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -23,7 +23,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QListView" name="listView_2">
+  <widget class="QListView" name="acc_list">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -33,7 +33,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QListView" name="listView_3">
+  <widget class="QListView" name="chn_list">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -43,7 +43,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QListView" name="listView_4">
+  <widget class="QListView" name="add_list">
    <property name="geometry">
     <rect>
      <x>400</x>
@@ -53,7 +53,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="KDialogButtonBox" name="dialogButtonBox">
+  <widget class="KDialogButtonBox" name="close_btn">
    <property name="geometry">
     <rect>
      <x>425</x>
@@ -66,7 +66,7 @@
     <set>QDialogButtonBox::Close</set>
    </property>
   </widget>
-  <widget class="KPushButton" name="kpushbutton">
+  <widget class="KPushButton" name="coin_add_btn">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -84,7 +84,7 @@
     <string>Add</string>
    </property>
   </widget>
-  <widget class="KPushButton" name="kpushbutton_2">
+  <widget class="KPushButton" name="coin_rm_btn">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -102,7 +102,7 @@
     <string>Remove</string>
    </property>
   </widget>
-  <widget class="KPushButton" name="kpushbutton_3">
+  <widget class="KPushButton" name="acc_rm_btn">
    <property name="geometry">
     <rect>
      <x>190</x>
@@ -120,7 +120,7 @@
     <string>Remove</string>
    </property>
   </widget>
-  <widget class="KPushButton" name="kpushbutton_4">
+  <widget class="KPushButton" name="acc_add_btn">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -138,7 +138,7 @@
     <string>Add</string>
    </property>
   </widget>
-  <widget class="KPushButton" name="kpushbutton_5">
+  <widget class="KPushButton" name="chn_rm_btn">
    <property name="geometry">
     <rect>
      <x>320</x>
@@ -156,7 +156,7 @@
     <string>Remove</string>
    </property>
   </widget>
-  <widget class="KPushButton" name="kpushbutton_6">
+  <widget class="KPushButton" name="chn_add_btn">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -174,7 +174,7 @@
     <string>Add</string>
    </property>
   </widget>
-  <widget class="KPushButton" name="kpushbutton_7">
+  <widget class="KPushButton" name="add_rm_btn">
    <property name="geometry">
     <rect>
      <x>450</x>
@@ -192,7 +192,7 @@
     <string>Remove</string>
    </property>
   </widget>
-  <widget class="KPushButton" name="kpushbutton_8">
+  <widget class="KPushButton" name="add_add_btn">
    <property name="geometry">
     <rect>
      <x>400</x>

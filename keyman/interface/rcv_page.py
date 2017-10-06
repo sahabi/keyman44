@@ -17,6 +17,7 @@ class Ui_Dialog(object):
         self.pushButton.setObjectName("pushButton")
         self.qr_label = QtWidgets.QLabel(Dialog)
         self.qr_label.setGeometry(QtCore.QRect(55, 70, 311, 161))
+        self.qr_label.setAlignment(QtCore.Qt.AlignCenter)
         self.qr_label.setObjectName("qr_label")
         self.address_label = QtWidgets.QLabel(Dialog)
         self.address_label.setGeometry(QtCore.QRect(20, 10, 371, 17))
@@ -29,6 +30,6 @@ class Ui_Dialog(object):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.pushButton.setText(_translate("Dialog", "Close"))
-        self.qr_label.setText(_translate("Dialog", "TextLabel"))
-        self.address_label.setText(_translate("Dialog", "TextLabel"))
+        self.qr_label.setText(_translate("Dialog", "QR CODE"))
+        self.address_label.setText(_translate("Dialog", "Address"))
 

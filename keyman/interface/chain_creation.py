@@ -15,16 +15,17 @@ class Ui_Dialog(object):
         self.textEdit_2 = QtWidgets.QTextEdit(Dialog)
         self.textEdit_2.setGeometry(QtCore.QRect(120, 20, 71, 31))
         self.textEdit_2.setObjectName("textEdit_2")
-        self.buttonBox_2 = QtWidgets.QDialogButtonBox(Dialog)
-        self.buttonBox_2.setGeometry(QtCore.QRect(20, 70, 181, 32))
-        self.buttonBox_2.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox_2.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
-        self.buttonBox_2.setObjectName("buttonBox_2")
         self.comboBox = QtWidgets.QComboBox(Dialog)
         self.comboBox.setGeometry(QtCore.QRect(30, 20, 78, 27))
         self.comboBox.setObjectName("comboBox")
+        self.buttonBox = QtWidgets.QDialogButtonBox(Dialog)
+        self.buttonBox.setGeometry(QtCore.QRect(30, 70, 176, 27))
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setObjectName("buttonBox")
 
         self.retranslateUi(Dialog)
+        self.buttonBox.accepted.connect(Dialog.accept)
+        self.buttonBox.rejected.connect(Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):

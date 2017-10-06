@@ -14,14 +14,21 @@ from .widgets import PubKeyTreeWidgetItem, PrivKeyTreeWidgetItem
 import bip44_page
 import send_page
 import rcv_page
+import coin_selection
+import account_creation
+import chain_creation
 
 class App(object):
     def __init__(self):
         self.app = QtWidgets.QApplication(sys.argv)
+
         self.main_dialog = QtWidgets.QDialog()
+        self.coin_select_dialog = QtWidgets.QDialog()
+        self.acc_create_dialog = QtWidgets.QDialog()
+        self.chain_create_dialog = QtWidgets.QDialog()
+
         self.bip44_page = bip44_page.Ui_Dialog()
         self.bip44_page.setupUi(self.main_dialog)
-        self.main_dialog.show()
         self.bip44_page.coin_add_btn.clicked.connect(self.add_coin)
         self.bip44_page.acc_add_btn.clicked.connect(self.add_acc)
         self.bip44_page.chn_add_btn.clicked.connect(self.add_chn)
@@ -31,17 +38,33 @@ class App(object):
         self.bip44_page.chn_rm_btn.clicked.connect(self.rm_chn)
         self.bip44_page.addr_rm_btn.clicked.connect(self.rm_addr)
 
+        self.coin_select_page = coin_selection.Ui_Dialog()
+        self.coin_select_page.setupUi(self.coin_select_dialog)
+        self.coin_select_page.comboBox.addItem("BTC")
+        self.coin_select_page.comboBox.addItem("BTC-testnet")
+
+        self.acc_create_page = account_creation.Ui_Dialog()
+        self.acc_create_page.setupUi(self.acc_create_dialog)
+
+        self.chain_create_page = chain_creation.Ui_Dialog()
+        self.chain_create_page.setupUi(self.chain_create_dialog)
+
+        self.main_dialog.show()
+
     def run(self):
         sys.exit(self.app.exec_())
 
     def add_coin(self):
-        self.netcode = get_current_netcode()
+        self.coin_select_dialog.exec_()
+        coin_name = self.coin_select_page.comboBox.currentText()
+        self.bip44_page.coin_list.addItem(coin_name)
+
 
     def add_acc(self):
-        pass
+        self.acc_create_dialog.show()
 
     def add_chn(self):
-        pass
+        self.chain_create_dialog.show()
 
     def add_addr(self):
         pass

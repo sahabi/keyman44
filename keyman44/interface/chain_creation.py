@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'chain_creation.ui'
+# Form implementation generated from reading ui file 'ui/chain_creation.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #
@@ -24,8 +24,6 @@ class Ui_Dialog(object):
         self.buttonBox.setObjectName("buttonBox")
 
         self.retranslateUi(Dialog)
-        self.buttonBox.accepted.connect(Dialog.accept)
-        self.buttonBox.rejected.connect(Dialog.reject)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
 
     def retranslateUi(self, Dialog):

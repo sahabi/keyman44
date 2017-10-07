@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'coin_selection.ui'
+# Form implementation generated from reading ui file 'ui/coin_selection.ui'
 #
 # Created by: PyQt5 UI code generator 5.9
 #
@@ -19,6 +19,7 @@ class Ui_Dialog(object):
         self.buttonBox.setObjectName("buttonBox")
         self.comboBox = QtWidgets.QComboBox(Dialog)
         self.comboBox.setGeometry(QtCore.QRect(30, 20, 78, 27))
+        self.comboBox.setEditable(False)
         self.comboBox.setObjectName("comboBox")
 
         self.retranslateUi(Dialog)

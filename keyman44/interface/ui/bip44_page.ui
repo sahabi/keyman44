@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>538</width>
-    <height>370</height>
+    <width>772</width>
+    <height>374</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>140</x>
      <y>10</y>
      <width>66</width>
      <height>17</height>
@@ -35,7 +35,7 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>270</x>
      <y>10</y>
      <width>66</width>
      <height>17</height>
@@ -54,7 +54,7 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>400</x>
      <y>10</y>
      <width>66</width>
      <height>17</height>
@@ -73,7 +73,7 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>530</x>
      <y>10</y>
      <width>66</width>
      <height>17</height>
@@ -92,7 +92,7 @@
   <widget class="QPushButton" name="close_btn">
    <property name="geometry">
     <rect>
-     <x>437</x>
+     <x>677</x>
      <y>330</y>
      <width>81</width>
      <height>27</height>
@@ -105,7 +105,7 @@
   <widget class="QPushButton" name="coin_add_btn">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>140</x>
      <y>290</y>
      <width>41</width>
      <height>27</height>
@@ -118,7 +118,7 @@
   <widget class="QPushButton" name="coin_rm_btn">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>190</x>
      <y>290</y>
      <width>71</width>
      <height>27</height>
@@ -131,7 +131,7 @@
   <widget class="QPushButton" name="acc_rm_btn">
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>320</x>
      <y>290</y>
      <width>71</width>
      <height>27</height>
@@ -144,7 +144,7 @@
   <widget class="QPushButton" name="chn_rm_btn">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>450</x>
      <y>290</y>
      <width>71</width>
      <height>27</height>
@@ -157,7 +157,7 @@
   <widget class="QPushButton" name="addr_rm_btn">
    <property name="geometry">
     <rect>
-     <x>450</x>
+     <x>580</x>
      <y>290</y>
      <width>71</width>
      <height>27</height>
@@ -170,7 +170,7 @@
   <widget class="QPushButton" name="acc_add_btn">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>270</x>
      <y>290</y>
      <width>41</width>
      <height>27</height>
@@ -183,7 +183,7 @@
   <widget class="QPushButton" name="chn_add_btn">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>400</x>
      <y>290</y>
      <width>41</width>
      <height>27</height>
@@ -196,7 +196,7 @@
   <widget class="QPushButton" name="addr_add_btn">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>530</x>
      <y>290</y>
      <width>41</width>
      <height>27</height>
@@ -209,7 +209,7 @@
   <widget class="QListWidget" name="coin_list">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>140</x>
      <y>30</y>
      <width>121</width>
      <height>241</height>
@@ -219,7 +219,7 @@
   <widget class="QListWidget" name="acc_list">
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>270</x>
      <y>30</y>
      <width>121</width>
      <height>241</height>
@@ -229,7 +229,7 @@
   <widget class="QListWidget" name="chain_list">
    <property name="geometry">
     <rect>
-     <x>270</x>
+     <x>400</x>
      <y>30</y>
      <width>121</width>
      <height>241</height>
@@ -239,11 +239,104 @@
   <widget class="QListWidget" name="addr_list">
    <property name="geometry">
     <rect>
-     <x>400</x>
+     <x>530</x>
      <y>30</y>
      <width>121</width>
      <height>241</height>
     </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>91</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Master Key</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="mk_rm_btn">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>290</y>
+     <width>71</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Remove</string>
+   </property>
+  </widget>
+  <widget class="QListWidget" name="mk_list">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>30</y>
+     <width>121</width>
+     <height>241</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="mk_add_btn">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>290</y>
+     <width>41</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Add</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>10</y>
+     <width>66</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Balance</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>30</y>
+     <width>66</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>1.0 BTC</string>
    </property>
   </widget>
  </widget>

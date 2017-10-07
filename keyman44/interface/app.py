@@ -58,14 +58,7 @@ class App(object):
         self.bip44_page.acc_list.clicked.connect(self.activate_acc)
         self.bip44_page.addr_list.clicked.connect(self.activate_addr)
 
-        self.bip44_page.coin_add_btn.setDisabled(True)
-        self.bip44_page.coin_rm_btn.setDisabled(True)
-        self.bip44_page.acc_add_btn.setDisabled(True)
-        self.bip44_page.acc_rm_btn.setDisabled(True)
-        self.bip44_page.addr_add_btn.setDisabled(True)
-        self.bip44_page.addr_rm_btn.setDisabled(True)
-        self.bip44_page.mk_add_btn.setDisabled(False)
-        self.bip44_page.mk_rm_btn.setDisabled(True)
+        self.init_buttons()
 
         self.mk_page = mk_page.Ui_Dialog()
         self.mk_page.setupUi(self.mk_dialog)
@@ -81,6 +74,17 @@ class App(object):
 
         self.bip44_page.close_btn.clicked.connect(self.main_dialog.reject)
         self.main_dialog.show()
+
+    def init_buttons(self):
+        self.bip44_page.coin_add_btn.setDisabled(True)
+        self.bip44_page.coin_rm_btn.setDisabled(True)
+        self.bip44_page.acc_add_btn.setDisabled(True)
+        self.bip44_page.acc_rm_btn.setDisabled(True)
+        self.bip44_page.addr_add_btn.setDisabled(True)
+        self.bip44_page.addr_rm_btn.setDisabled(True)
+        self.bip44_page.mk_add_btn.setDisabled(False)
+        self.bip44_page.mk_rm_btn.setDisabled(True)
+
 
     def run(self):
         sys.exit(self.app.exec_())
@@ -106,7 +110,6 @@ class App(object):
         else:
             return
         coin = Coin(name=coin_name, mk=self.mk_record[mk_name], network=network)
-        self.coin_record[coin.name] = coin
         self.mk_record[mk_name].coins[coin.name] = coin
         if coin != '':
             self.bip44_page.coin_list.addItem(coin.name)
@@ -122,20 +125,19 @@ class App(object):
         self.acc_create_dialog.exec_()
         acc_name = self.acc_create_page.acc_name.toPlainText()
         coin_name = self.bip44_page.coin_list.selectedItems()[0].text()
-        coin = self.coin_record[coin_name]
-        account = Account(name=acc_name, coin=coin, index=self.account_counter)
-        self.account_record[account.name] = account
-        self.coin_record[coin_name].accounts[acc_name] = account
-        self.account_counter = len(self.account_record.values())
+        mk_name = self.bip44_page.mk_list.selectedItems()[0].text()
+        coin = self.mk_record[mk_name].coins[coin_name]
+        account = Account(name=acc_name, coin=coin)
+        coin.add(acc_name, account)
         self.bip44_page.acc_list.addItem(account.name)
 
     def add_addr(self):
         acc_name = self.bip44_page.acc_list.selectedItems()[0].text()
-        account = self.account_record[acc_name]
-        addr = ExternalAddress(account=account, index=self.ext_addr_counter)
-        self.ext_addr_record.append(addr)
-        self.account_record[acc_name].external_addr.append(addr)
-        self.ext_addr_counter = len(self.ext_addr_record)
+        coin_name = self.bip44_page.coin_list.selectedItems()[0].text()
+        mk_name = self.bip44_page.mk_list.selectedItems()[0].text()
+        account = self.mk_record[mk_name].coins[coin_name].accounts[acc_name]
+        addr = ExternalAddress(account=account)
+        account.add(addr)
         self.bip44_page.addr_list.addItem(addr.addr)
 
     def rm_mk(self):
